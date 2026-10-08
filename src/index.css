@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #121214;
+    color: #FFFFFF;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-serif);
+    text-wrap: balance;
+  }
+}
+
+.gold-glow {
+  box-shadow: 0 0 20px -3px rgba(212, 175, 55, 0.25);
+}
+
+.gold-glow-strong {
+  box-shadow: 0 0 24px rgba(212, 175, 55, 0.35);
+}
+
+.slot-selected-glow {
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.3);
+}
+
+.focus-gold:focus-visible {
+  outline: none;
+  border-color: #D4AF37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}

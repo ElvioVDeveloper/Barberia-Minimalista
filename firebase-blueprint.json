@@ -1,0 +1,343 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Stores client and master barber user profiles with strict role isolation.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Firebase Auth UID of the user.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Full name of the client or barber.",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Verified email address of the user.",
+          "minLength": 3,
+          "maxLength": 120
+        },
+        "phone": {
+          "type": "string",
+          "description": "Phone or WhatsApp contact number.",
+          "minLength": 0,
+          "maxLength": 30
+        },
+        "role": {
+          "type": "string",
+          "description": "Role of the user in the studio.",
+          "enum": ["client", "admin"],
+          "minLength": 5,
+          "maxLength": 10
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the profile was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the profile was last updated."
+        }
+      },
+      "required": ["uid", "displayName", "email", "phone", "role", "createdAt", "updatedAt"]
+    },
+    "AdminRecord": {
+      "title": "AdminRecord",
+      "description": "Trusted administrator lookup document for the master barber.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "UID of the administrator.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email of the administrator.",
+          "minLength": 3,
+          "maxLength": 120
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of admin assignment."
+        }
+      },
+      "required": ["uid", "email", "createdAt"]
+    },
+    "BarberService": {
+      "title": "BarberService",
+      "description": "Catalog item representing a haircut, beard sculpting, or grooming ritual.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Display title of the service.",
+          "minLength": 2,
+          "maxLength": 80
+        },
+        "category": {
+          "type": "string",
+          "description": "Service classification category.",
+          "enum": ["corte", "barba", "ritual", "combo"],
+          "minLength": 5,
+          "maxLength": 10
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the ritual and techniques included.",
+          "minLength": 4,
+          "maxLength": 280
+        },
+        "price": {
+          "type": "number",
+          "description": "Price of the service in Paraguayan Guaranies (PYG)."
+        },
+        "durationMinutes": {
+          "type": "number",
+          "description": "Duration of the appointment in minutes."
+        },
+        "visibility": {
+          "type": "string",
+          "description": "Visibility scope for catalog queries.",
+          "enum": ["public"],
+          "minLength": 6,
+          "maxLength": 6
+        },
+        "featured": {
+          "type": "boolean",
+          "description": "Whether the service is highlighted as a signature ritual."
+        },
+        "ownerId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the barber/creator who registered the service.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the service was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the service was last modified."
+        }
+      },
+      "required": ["name", "category", "description", "price", "durationMinutes", "visibility", "featured", "ownerId", "createdAt", "updatedAt"]
+    },
+    "BookedSlot": {
+      "title": "BookedSlot",
+      "description": "PII-free public availability marker for a specific date and time slot.",
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "description": "Appointment date in YYYY-MM-DD format.",
+          "minLength": 10,
+          "maxLength": 10,
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "time": {
+          "type": "string",
+          "description": "Appointment time in HH:MM format.",
+          "minLength": 5,
+          "maxLength": 5,
+          "pattern": "^[0-9]{2}:[0-9]{2}$"
+        },
+        "status": {
+          "type": "string",
+          "description": "Current occupancy status of the slot.",
+          "enum": ["booked", "completed", "cancelled"],
+          "minLength": 6,
+          "maxLength": 10
+        },
+        "serviceId": {
+          "type": "string",
+          "description": "Referenced service ID.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "serviceName": {
+          "type": "string",
+          "description": "Snapshot of the service title.",
+          "minLength": 2,
+          "maxLength": 80
+        },
+        "servicePrice": {
+          "type": "number",
+          "description": "Snapshot of the service price."
+        },
+        "appointmentId": {
+          "type": "string",
+          "description": "ID of the associated private appointment record.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "ownerId": {
+          "type": "string",
+          "description": "UID of the user who booked the slot.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "visibility": {
+          "type": "string",
+          "description": "Public visibility flag for availability grid queries.",
+          "enum": ["public"],
+          "minLength": 6,
+          "maxLength": 6
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last update."
+        }
+      },
+      "required": ["date", "time", "status", "serviceId", "serviceName", "servicePrice", "appointmentId", "ownerId", "visibility", "createdAt", "updatedAt"]
+    },
+    "Appointment": {
+      "title": "Appointment",
+      "description": "Private appointment record containing client PII (name, phone/WhatsApp) and booking state.",
+      "type": "object",
+      "properties": {
+        "slotId": {
+          "type": "string",
+          "description": "ID of the linked BookedSlot document (YYYY-MM-DD_HHMM).",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "date": {
+          "type": "string",
+          "description": "Appointment date in YYYY-MM-DD format.",
+          "minLength": 10,
+          "maxLength": 10,
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "time": {
+          "type": "string",
+          "description": "Appointment time in HH:MM format.",
+          "minLength": 5,
+          "maxLength": 5,
+          "pattern": "^[0-9]{2}:[0-9]{2}$"
+        },
+        "serviceId": {
+          "type": "string",
+          "description": "ID of the selected BarberService.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "serviceName": {
+          "type": "string",
+          "description": "Name of the selected BarberService.",
+          "minLength": 2,
+          "maxLength": 80
+        },
+        "servicePrice": {
+          "type": "number",
+          "description": "Price of the selected BarberService."
+        },
+        "durationMinutes": {
+          "type": "number",
+          "description": "Duration of the service in minutes."
+        },
+        "clientName": {
+          "type": "string",
+          "description": "Full name of the client.",
+          "minLength": 2,
+          "maxLength": 80
+        },
+        "clientPhone": {
+          "type": "string",
+          "description": "Client phone or WhatsApp number.",
+          "minLength": 6,
+          "maxLength": 30
+        },
+        "notes": {
+          "type": "string",
+          "description": "Optional client or barber notes.",
+          "minLength": 0,
+          "maxLength": 240
+        },
+        "status": {
+          "type": "string",
+          "description": "Lifecycle status of the reservation.",
+          "enum": ["confirmed", "completed", "cancelled"],
+          "minLength": 9,
+          "maxLength": 10
+        },
+        "source": {
+          "type": "string",
+          "description": "Booking channel origin.",
+          "enum": ["online", "walkin", "phone"],
+          "minLength": 5,
+          "maxLength": 6
+        },
+        "ownerId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the creator (client or barber).",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last update."
+        }
+      },
+      "required": ["slotId", "date", "time", "serviceId", "serviceName", "servicePrice", "durationMinutes", "clientName", "clientPhone", "notes", "status", "source", "ownerId", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Stores isolated user profiles and role assignments."
+    },
+    "/admins/{adminId}": {
+      "schema": { "$ref": "#/entities/AdminRecord" },
+      "description": "Trusted administrator registry for master barber access."
+    },
+    "/services/{serviceId}": {
+      "schema": { "$ref": "#/entities/BarberService" },
+      "description": "Catalog of haircuts, shaves, and grooming services with dynamic pricing."
+    },
+    "/bookedSlots/{slotId}": {
+      "schema": { "$ref": "#/entities/BookedSlot" },
+      "description": "PII-free public schedule matrix showing occupied time slots in real time."
+    },
+    "/appointments/{appointmentId}": {
+      "schema": { "$ref": "#/entities/Appointment" },
+      "description": "Private appointment records containing client contact PII and booking status."
+    }
+  }
+}
