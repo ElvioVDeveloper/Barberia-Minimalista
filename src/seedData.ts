@@ -97,7 +97,7 @@ export function formatReadableSpanishDate(isoDate: string): string {
 export const INITIAL_SERVICES: BarberService[] = [
   {
     id: 'srv_corte_imperial',
-    name: 'Corte Imperial Sovereign',
+    name: 'Corte Imperial BarberFlow',
     category: 'corte',
     description:
       'Corte de precisión a tijera japonesa y degradado progresivo a navaja, lavado revitalizante con carbón activo y peinado con pomada mate de autor.',

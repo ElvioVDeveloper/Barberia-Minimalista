@@ -53,7 +53,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             Identidad & Sincronización Firebase
           </p>
           <h3 className="font-display text-2xl font-semibold text-white">
-            {currentUser ? 'Tu Cuenta en Sovereign Craft' : 'Iniciar Sesión o Registrarse'}
+            {currentUser ? 'Tu Cuenta en BarberFlow' : 'Iniciar Sesión o Registrarse'}
           </h3>
           <p className="text-xs text-[#A1A1AA] leading-relaxed">
             Autentícate con tu cuenta de Google para respaldar tus turnos en Firestore Database o
@@ -67,7 +67,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               <div className="flex items-center justify-between">
                 <span className="text-[#A1A1AA]">Usuario autenticado</span>
                 <span className="text-white font-semibold">
-                  {currentUser.displayName || 'Usuario Sovereign'}
+                  {currentUser.displayName || 'Usuario BarberFlow'}
                 </span>
               </div>
               <div className="flex items-center justify-between">

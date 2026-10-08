@@ -11,7 +11,7 @@ export const SovereignEmblem: React.FC<SovereignEmblemProps> = ({ className = 'w
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
-      aria-label="Emblema Sovereign Craft"
+      aria-label="Emblema BarberFlow"
     >
       {/* Dotted outer ring */}
       <circle

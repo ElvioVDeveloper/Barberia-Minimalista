@@ -349,7 +349,7 @@ export const BarberAdminPortal: React.FC = () => {
           <div className="space-y-1.5">
             <div className="flex items-center gap-2 text-xs text-[#D4AF37] font-medium">
               <ShieldCheck className="w-4 h-4" />
-              <span>Panel de Administración · Sovereign Craft</span>
+              <span>Panel de Administración · BarberFlow</span>
             </div>
             <h1 className="font-display text-3xl md:text-4xl font-semibold text-white">
               Agenda Diaria y Catálogo

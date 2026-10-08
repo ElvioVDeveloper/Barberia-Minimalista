@@ -26,13 +26,13 @@ const STUDIO_COORDINATES = {
 };
 
 const STUDIO_DETAILS = {
-  name: 'Sovereign Craft — Barbería & Estudio',
+  name: 'BarberFlow — Barbería & Estudio',
   streetAddress: 'Av. Mariscal López 1480 esq. Charles de Gaulle',
   neighborhoodCity: 'Barrio Villa Morra · Asunción, Paraguay',
   reference: 'Frente a la plaza, con estacionamiento exclusivo para clientes.',
   phoneDisplay: '+595 981 458-291',
   phoneRaw: '595981458291',
-  instagramHandle: '@sovereigncraft.py',
+  instagramHandle: '@barberflow.py',
   instagramUrl: 'https://www.instagram.com/',
   scheduleMain: 'Martes a Sábado · 09:00 a 20:00 hs',
   scheduleClosed: 'Domingos y Lunes · Cerrado (Atención por Turno)',
@@ -363,7 +363,7 @@ export const StudioLocationSection: React.FC = () => {
                 </APIProvider>
               ) : (
                 <iframe
-                  title="Ubicación de la Barbería Sovereign Craft"
+                  title="Ubicación de la Barbería BarberFlow"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

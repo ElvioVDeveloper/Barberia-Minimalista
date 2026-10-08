@@ -140,10 +140,10 @@ export const StudioProvider: React.FC<{ children: React.ReactNode }> = ({ childr
             const newProfile: UserProfile = {
               uid: user.uid,
               displayName: sanitizeText(
-                user.displayName || user.email?.split('@')[0] || 'Cliente Sovereign',
+                user.displayName || user.email?.split('@')[0] || 'Cliente BarberFlow',
                 BLUEPRINT_CONSTRAINTS.NAME_MAX
               ),
-              email: sanitizeText(user.email || 'cliente@sovereign.studio', 120),
+              email: sanitizeText(user.email || 'cliente@barberflow.studio', 120),
               phone: sanitizeText(user.phoneNumber || '', BLUEPRINT_CONSTRAINTS.PHONE_MAX),
               role: isOwnerAdmin ? 'admin' : 'client',
             };
@@ -427,7 +427,7 @@ export const StudioProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       serviceName: 'Turno de Barbería (1 Hora)',
       servicePrice: 80000,
       durationMinutes: 60,
-      clientName: cleanName.length >= 2 ? cleanName : 'Cliente Sovereign',
+      clientName: cleanName.length >= 2 ? cleanName : 'Cliente BarberFlow',
       clientPhone: cleanPhone.length >= 6 ? cleanPhone : '0981 000-000',
       notes: cleanNotes,
       status: 'confirmed',

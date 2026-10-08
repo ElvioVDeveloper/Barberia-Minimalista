@@ -44,7 +44,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           onClick={() => handleNavClick('booking')}
           className="font-display text-xl md:text-2xl font-semibold tracking-tight text-white hover:text-[#D4AF37] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
         >
-          Sovereign Craft
+          BarberFlow
         </button>
 
         {/* Zone 2: 4-5 clean text navigation links */}

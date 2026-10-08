@@ -21,7 +21,7 @@ export const StudioFooterSection: React.FC<StudioFooterSectionProps> = ({
           <SovereignEmblem className="w-11 h-11 shrink-0" />
           <div>
             <span className="font-display text-lg font-semibold text-white block">
-              Sovereign Craft
+              BarberFlow
             </span>
             <span className="text-xs text-[#A1A1AA]">
               Turnos de 1 hora · Martes a Sábado 09:00 a 20:00 hs
@@ -58,7 +58,7 @@ export const StudioFooterSection: React.FC<StudioFooterSectionProps> = ({
           >
             Panel Admin
           </button>
-          <span className="text-[#52525B]">© {new Date().getFullYear()} Sovereign Craft</span>
+          <span className="text-[#52525B]">© {new Date().getFullYear()} BarberFlow</span>
         </div>
       </div>
     </footer>

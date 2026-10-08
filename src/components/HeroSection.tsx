@@ -23,7 +23,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               Studio & Barbershop
             </p>
             <h1 className="font-display text-4xl sm:text-5xl font-semibold text-white tracking-tight">
-              Sovereign Craft
+              BarberFlow
             </h1>
             <p className="text-sm sm:text-base text-[#A1A1AA] max-w-xl mx-auto leading-relaxed">
               Cortes de precisión y afeitado tradicional. Reserva tu turno de 1 hora en línea.
